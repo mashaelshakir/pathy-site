@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pathy - منصة التعلم التعاوني</title>
-
+<link rel="icon" type="image/svg+xml" href="Images/Logo Pathy.svg">
     <style>
      /* هوية باثي */
     @font-face {
@@ -125,18 +125,58 @@
         }
 
         .logo {
-        font-size: 52px;
-        font-weight: 800;
-        letter-spacing: 0.6px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 0;
+    background: none;
+    -webkit-text-fill-color: initial;
+    margin-bottom: 25px;
+    position: relative; 
+    cursor: pointer;
+}
 
-        /* Gradient text مطابق للهوية */
-        background: linear-gradient(45deg, var(--blue-500), var(--mint-500));
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+.logo::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(0, 208, 184, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: all 0.6s ease;
+    z-index: 0;
+}
 
-        margin-bottom: 8px;
-        }
+
+.logo:hover::before {
+    transform: scale(1.8);
+    animation: pulse-effect 2s infinite;
+}
+
+.logo-img {
+    height: 140px; 
+    width: auto;
+    display: block; 
+    margin: 0 auto;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo:hover .logo-img {
+    transform: scale(1.05) rotate(-2deg); 
+}
+
+
+@keyframes pulse-effect {
+    0% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.5); opacity: 0.3; }
+    100% { transform: scale(1.9); opacity: 0; }
+}
+
+
 
         .tagline {
         font-size: 16px;
@@ -444,7 +484,9 @@
 <body>
     <div class="container">
         <header>
-            <div class="logo">Pathy</div>
+            <div class="logo">
+                <img src="Images/Logo Pathy.svg" alt="Pathy Logo" class="logo-img">
+            </div>
             <p class="tagline">مبادرة تعليمية لحل مشاكل إكمال رحلات التعلم الذاتي</p>
             <div class="theme-toggle-container">
                 <button id="theme-toggle" class="theme-toggle" aria-label="تبديل السمة">🌙</button>
